@@ -7,4 +7,4 @@ OPTIMIZE tweets.`gold`;
 
 -- COMMAND ----------
 
-VACUUM tweets.`gold` RETAIN 168 HOURS;
+VACUUM tweets .`gold` RETAIN 168 HOURS;
