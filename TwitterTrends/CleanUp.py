@@ -13,7 +13,7 @@ try:
   dbutils.fs.rm(goldCheckpointPath, True)
 except:
   dbutils.fs.mkdirs(mntPath)
-  dbutils.fs.mount("s3a://{}/tweets/".format(spark.conf.get("internal.s3-bucket")), mntPath)
+  dbutils.fs.mount("s3a://{}/tweets/".format(spark.conf.get("spark.s3-bucket")), mntPath)
 
 # COMMAND ----------
 
