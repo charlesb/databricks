@@ -130,10 +130,10 @@ from pyspark.sql.functions import window, hour, from_unixtime
 
 # COMMAND ----------
 
-#  %sql select * from tweets.`gold` order by datetime, hour, count desc;
+#  %sql select * from tweets.`gold` order by datetime desc, hour desc, count desc;
 
 # COMMAND ----------
 
-# for s in spark.streams.active:
-#   s.stop()
-#   print(s.name)
+for s in spark.streams.active:
+  s.stop()
+  print(s.name)
