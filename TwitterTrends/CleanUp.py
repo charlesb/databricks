@@ -40,16 +40,20 @@ except:
 # MAGIC hashtag string,
 # MAGIC lang string,
 # MAGIC text string,
-# MAGIC createdAt timestamp
+# MAGIC createdAt timestamp,
+# MAGIC year int,
+# MAGIC month int,
+# MAGIC day int
 # MAGIC )
-# MAGIC using delta;
+# MAGIC using delta
+# MAGIC partitioned by (year, month, day);
 
 # COMMAND ----------
 
 # MAGIC %sql
 # MAGIC create table tweets.`gold` (
 # MAGIC hashtag string,
-# MAGIC date timestamp,
+# MAGIC datetime string,
 # MAGIC hour int,
 # MAGIC count long
 # MAGIC )
