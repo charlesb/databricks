@@ -1,4 +1,11 @@
 # Databricks notebook source
+# MAGIC %md-sandbox
+# MAGIC <img src="https://files.training.databricks.com/images/Apache-Spark-Logo_TM_200px.png" style="float: left: margin: 20px"/>
+# MAGIC 
+# MAGIC # Streaming ETL
+
+# COMMAND ----------
+
 mntPath = "dbfs:/mnt/tweets"
 
 # bronzePath           = mntPath + "/bronze.delta"
