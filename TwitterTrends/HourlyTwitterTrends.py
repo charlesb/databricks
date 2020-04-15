@@ -134,6 +134,16 @@ from pyspark.sql.functions import window, hour, from_unixtime
 
 # COMMAND ----------
 
+# MAGIC %sql
+# MAGIC select * from (
+# MAGIC select datetime, hashtag, count, rank() over (partition by datetime order by count desc) as rank
+# MAGIC from tweets.`gold`
+# MAGIC )
+# MAGIC where rank <= 10
+# MAGIC order by datetime desc, rank asc;
+
+# COMMAND ----------
+
 for s in spark.streams.active:
   s.stop()
   print(s.name)
