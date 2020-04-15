@@ -61,6 +61,10 @@ except:
 
 # COMMAND ----------
 
+# MAGIC %sql GRANT SELECT ON TABLE tweets.`gold` TO `analysts`
+
+# COMMAND ----------
+
 import json
 
 dbutils.notebook.exit(json.dumps({
