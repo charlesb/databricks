@@ -74,7 +74,7 @@ spark.conf.set("spark.sql.shuffle.partitions", sc.defaultParallelism)
 # COMMAND ----------
 
 from pyspark.sql.types import StructField, StructType, ArrayType, StringType, IntegerType, LongType, TimestampType
-from pyspark.sql.functions import lower, from_json, explode
+from pyspark.sql.functions import lower, from_json, explode, dayofmonth, year, month
 
 schema = StructType([
   StructField("id", LongType(), True),
@@ -91,7 +91,10 @@ schema = StructType([
  .withColumn("hashtag", explode("json.hashTags"))
  .withColumn("hashtag", lower(col("hashtag")))
  .withColumn("createdAt", (col("json.createdAt").cast(LongType())/1000).cast(TimestampType()))
- .select("json.id", "json.user", "hashtag", "json.lang", "json.text", "createdAt")
+ .withColumn("year", year(col("createdAt")))
+ .withColumn("month", month(col("createdAt")))
+ .withColumn("day", dayofmonth(col("createdAt")))
+ .select("json.id", "json.user", "hashtag", "json.lang", "json.text", "createdAt", "year", "month", "day")
  .writeStream
  .format("delta")
  .option("checkpointLocation", silverCheckpointPath)
@@ -107,16 +110,16 @@ schema = StructType([
 
 # COMMAND ----------
 
-from pyspark.sql.functions import window, hour, date_trunc
+from pyspark.sql.functions import window, hour, from_unixtime
 
 (spark.readStream.table("tweets.`silver`")
  .withWatermark("createdAt", "60 minutes")
  .groupBy(window("createdAt", "60 minutes"), "hashtag")
  .count()
- .withColumn("date", date_trunc("day", col("window.start")))
+ .withColumn("datetime", from_unixtime(col("window.start").cast('long'), "yyyy-MM-dd HH:mm:ss"))
  .withColumn("hour", hour(col("window.start")))
- .select("hashtag", "date", "hour", "count")
- .orderBy("date", "hour", "count", ascending=False)
+ .select("hashtag", "datetime", "hour", "count")
+ .orderBy("datetime", "hour", "count", ascending=False)
  .writeStream
  .format("delta")
  .option("checkpointLocation", goldCheckpointPath)
@@ -127,10 +130,20 @@ from pyspark.sql.functions import window, hour, date_trunc
 
 # COMMAND ----------
 
-#  %sql select * from tweets.`gold` order by date, hour, count desc;
+#  %sql select * from tweets.`gold` order by datetime desc, hour desc, count desc;
 
 # COMMAND ----------
 
-# for s in spark.streams.active:
-#   s.stop()
-#   print(s.name)
+# MAGIC %sql
+# MAGIC select * from (
+# MAGIC select datetime, hashtag, count, rank() over (partition by datetime order by count desc) as rank
+# MAGIC from tweets.`gold`
+# MAGIC )
+# MAGIC where rank <= 10
+# MAGIC order by datetime desc, rank asc;
+
+# COMMAND ----------
+
+for s in spark.streams.active:
+  s.stop()
+  print(s.name)
