@@ -11,7 +11,8 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"folderPath": "_success",
+				"fileName": "_success",
+				"folderPath": "staged_sink",
 				"container": "sinkdata"
 			},
 			"columnDelimiter": ",",
