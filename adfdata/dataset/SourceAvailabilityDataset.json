@@ -11,9 +11,8 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "_success",
-				"folderPath": "source",
-				"container": "data"
+				"folderPath": "_success",
+				"container": "sinkdata"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
