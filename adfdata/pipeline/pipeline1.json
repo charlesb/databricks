@@ -15,7 +15,15 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"notebookPath": "/Repos/charles.bernard@databricks.com/CDC-demo/MySQL-Debezium-EventHub-Delta"
+					"notebookPath": "/Users/charles.bernard@databricks.com/test",
+					"libraries": [
+						{
+							"pypi": {
+								"package": "simplejson==3.4.0",
+								"repo": "https://pypi.python.org/"
+							}
+						}
+					]
 				},
 				"linkedServiceName": {
 					"referenceName": "AzureDatabricks2",
