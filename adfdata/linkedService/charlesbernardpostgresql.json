@@ -1,0 +1,12 @@
+{
+	"name": "charlesbernardpostgresql",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "PostgreSql",
+		"typeProperties": {
+			"connectionString": "host=charlesbernard-postgresql.postgres.database.azure.com;port=5432;database=demo;uid=charles@charlesbernard-postgresql;encryptionmethod=6;validateservercertificate=0",
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkNIQVJMRVNCRVJOQVJELURGX2M1M2IyODMwLTU2ZDAtNDVjMC1iOWNkLTRkZWMzZTE0YTA3ZiINCn0="
+		}
+	}
+}
