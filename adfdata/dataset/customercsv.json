@@ -1,0 +1,23 @@
+{
+	"name": "customercsv",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "charlesbernardadls2",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "telcom-customer-churn-sink",
+				"fileSystem": "my-container"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
