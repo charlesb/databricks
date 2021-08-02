@@ -79,7 +79,10 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"notebookPath": "/Users/charles.bernard@databricks.com/kpl-demo/data-prep"
+					"notebookPath": "/Users/charles.bernard@databricks.com/kpl-demo/data-prep",
+					"baseParameters": {
+						"deploy_to_aml": "True"
+					}
 				},
 				"linkedServiceName": {
 					"referenceName": "AzureDatabricks1",
