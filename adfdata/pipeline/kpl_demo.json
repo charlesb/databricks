@@ -81,7 +81,7 @@
 				"typeProperties": {
 					"notebookPath": "/Users/charles.bernard@databricks.com/kpl-demo/data-prep",
 					"baseParameters": {
-						"deploy_to_aml": "True"
+						"deploy_to_aml": "False"
 					}
 				},
 				"linkedServiceName": {
