@@ -10,7 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"folderPath": "telcom-customer-churn-sink",
+				"folderPath": "telcom-customer-churn/sink",
 				"fileSystem": "my-container"
 			},
 			"columnDelimiter": ",",
