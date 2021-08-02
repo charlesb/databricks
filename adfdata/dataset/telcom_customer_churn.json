@@ -1,0 +1,16 @@
+{
+	"name": "telcom_customer_churn",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "charlesbernardpostgresql",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "PostgreSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "public",
+			"table": "telcom_customer_churn"
+		}
+	}
+}
