@@ -1,0 +1,20 @@
+{
+	"name": "customerparquet",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "charlesbernardadls2",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "telcom-customer-churn-sink",
+				"fileSystem": "delta-demo"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	}
+}
