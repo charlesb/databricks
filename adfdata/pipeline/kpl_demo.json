@@ -51,6 +51,33 @@
 						"type": "DatasetReference"
 					}
 				]
+			},
+			{
+				"name": "transform_and_train",
+				"type": "DatabricksNotebook",
+				"dependsOn": [
+					{
+						"activity": "telcom_customer",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"notebookPath": "/Users/charles.bernard@databricks.com/kpl-demo/data-prep"
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureDatabricks1",
+					"type": "LinkedServiceReference"
+				}
 			}
 		],
 		"annotations": []
